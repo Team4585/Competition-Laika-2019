@@ -1,3 +1,4 @@
+//This is the version of the code used at San Diego
 /*----------------------------------------------------------------------------*/
 /* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
@@ -6,7 +7,6 @@
 /*----------------------------------------------------------------------------*/
 
 package org.huskyrobotics.frc2019;
-
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,8 +19,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.huskyrobotics.frc2019.subsystems.cargo.CargoIO;
+import org.huskyrobotics.frc2019.subsystems.climber.Flipper;
 import org.huskyrobotics.frc2019.subsystems.drive.FalconLibStuff.FalconDrive;
-import org.huskyrobotics.frc2019.subsystems.superstructure.PivotArm;
+import org.huskyrobotics.frc2019.subsystems.hatch.Hatch;
 import org.ghrobotics.lib.debug.LiveDashboard;
 import org.ghrobotics.lib.mathematics.twodim.geometry.Pose2d;
 import org.ghrobotics.lib.mathematics.units.LengthKt;
@@ -31,7 +32,6 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 
 import org.huskyrobotics.frc2019.Constants.limelight;
 import org.huskyrobotics.frc2019.FalconAuto.*;
-import org.huskyrobotics.frc2019.auto.Auto;
 import org.huskyrobotics.frc2019.commands.Auto.*;
 //import org.huskyrobotics.frc2019.commands.Auto.CargoRoutine;
 import org.huskyrobotics.frc2019.inputs.*;
@@ -47,9 +47,11 @@ public class Robot extends TimedRobot {
   public Robot(){
     super(0.025d);
   }
-  public static OI m_Oi = new OI(0,1);
+  public static OI m_Oi = new OI(0, 1);
+  public static Hatch m_Kennedy = new Hatch(RobotMap.kHatchMaster);
+  public static Flipper m_Armstrong;
   //public static CargoIO m_Cargo = new CargoIO(RobotMap.kIntake);
-  //private HatchIO m_hatch;
+  //public static Hatch m_Kennedy = new Hatch(3);
   public static FalconDrive m_Drive = FalconDrive.getInstance();
   public static Vision m_Limelight = new Vision();
   //public static PivotArm m_Pivot = new PivotArm(RobotMap.kPivotMaster, EncoderMode.QuadEncoder);
@@ -71,14 +73,12 @@ public class Robot extends TimedRobot {
     System.out.println("Robot is Zeroed and init'd");
     
     
-    
-
     Trajectories.generateAllTrajectories();
     m_Compressor.setClosedLoopControl(true);                                                                                        
     //m_cargo = new CargoIO(RobotMap.cargoMotorPWM, RobotMap.cargoMotorDIO, RobotMap.cargoSensor);
-    //m_hatch = new HatchIO(RobotMap.actuatorPortsPWM, RobotMap.actuatorPortsDIO);
+    // m_Armstrong = new Flipper(RobotMap.kWinchMaster, RobotMap.kLeftSolenoid, RobotMap.kRightSolenoid);
     Auto = new SendableChooser<Command>();
-    Auto.addOption("My Auto", new CargoRoutine('m', 'l'));
+    Auto.addOption("My Auto", new HatchRoutine('m', 'l'));
     Auto.addOption("Test", new TestAuto());
     Auto.addOption("Drive Straight", new DriveStraight(2));
     SmartDashboard.putData("Auto", Auto);
@@ -228,5 +228,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
+    
   }
 }

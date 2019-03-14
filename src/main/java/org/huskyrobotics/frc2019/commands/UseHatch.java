@@ -7,30 +7,38 @@
 
 package org.huskyrobotics.frc2019.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
+import org.huskyrobotics.frc2019.OI;
 import org.huskyrobotics.frc2019.Robot;
+import org.huskyrobotics.frc2019.subsystems.hatch.Hatch;
 
-public class Pivot extends Command {
-  double Angle;
-  public Pivot(double Angle) {
+import edu.wpi.first.wpilibj.command.Command;
+
+public class UseHatch extends Command {
+
+  public UseHatch(double oi) {
+    requires(Robot.m_Kennedy);
     // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
-    requires(Robot.m_Pivot);
-    this.Angle = Angle;
-
-
+    // eg. requirdoublees(chassis);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.m_Pivot.setArmAxis(Angle);
+    Robot.m_Kennedy.setMotor(0);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    
+    double motorValue = 0.5;// Change motor value to something
+    /*
+    while(Robot.m_Oi.contractHatchButton()){
+      Robot.m_Kennedy.setMotor(motorValue); 
+    }
+    while(Robot.m_Oi.expandHatchButton()){
+      Robot.m_Kennedy.setMotor(-motorValue);
+    }*/
+    Robot.m_Kennedy.setMotor(Robot.m_Oi.getHatchAxis());
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -42,11 +50,13 @@ public class Pivot extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.m_Kennedy.setMotor(0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    Robot.m_Kennedy.setMotor(0);
   }
 }

@@ -10,6 +10,7 @@ package org.huskyrobotics.frc2019.commands;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 
+import org.huskyrobotics.frc2019.Robot;
 import org.huskyrobotics.frc2019.subsystems.drive.FalconLibStuff.FalconDrive;
 import org.huskyrobotics.frc2019.subsystems.drive.FalconLibStuff.FalconDrive.Gear;
 
@@ -20,11 +21,11 @@ public class ShiftHigh extends InstantCommand {
   /**
    * Add your docs here.
    */
-  FalconDrive m_Drive;
+  FalconDrive drive = FalconDrive.getInstance();
   Boolean m_isHigh;
   public ShiftHigh() {
     super();
-    requires(m_Drive);
+    requires(drive);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -32,7 +33,7 @@ public class ShiftHigh extends InstantCommand {
   // Called once when the command executes
   @Override
   protected void initialize() {
-    m_Drive.setHighGear();
+    Robot.m_Drive.setHighGear();
     m_isHigh = true;
     SmartDashboard.putBoolean("Okay now THIS is epic 😂😂😂", m_isHigh);
   }

@@ -10,7 +10,7 @@ package org.huskyrobotics.frc2019.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-import org.huskyrobotics.lib.DriveSignal;
+import org.huskyrobotics.frc2019.DriveSignal;
 import org.huskyrobotics.frc2019.Robot;
 
 public class UseDrive extends Command {
@@ -21,7 +21,7 @@ public class UseDrive extends Command {
   }
 
   DriveSignal m_Signal;
-  Boolean isQuickTurn = (Robot.m_Oi.GetRobotForward() < 0.1);
+  Boolean isQuickTurn = (Robot.m_Oi.getRobotForward() < 0.1);
 
   // Called just before this Command runs the first time
   @Override
@@ -36,7 +36,7 @@ public class UseDrive extends Command {
   protected void execute() {
     //SmartDashboard.putNumber("Gyro", m_Drive.getGyro(true));
 
-    Robot.m_Drive.curvatureDrive(Robot.m_Oi.GetRobotForward(), Robot.m_Oi.GetRobotTwist(), isQuickTurn);
+    Robot.m_Drive.curvatureDrive(Robot.m_Oi.getRobotForward(), -Robot.m_Oi.getRobotTwist(), isQuickTurn);
     
   }
 

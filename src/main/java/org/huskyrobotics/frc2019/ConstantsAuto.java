@@ -7,7 +7,7 @@ import org.ghrobotics.lib.mathematics.units.LengthKt;
 import org.ghrobotics.lib.mathematics.units.Time;
 import org.ghrobotics.lib.mathematics.units.TimeUnitsKt;
 
-import org.huskyrobotics.lib.Util;
+import org.huskyrobotics.frc2019.Util;
 public class ConstantsAuto {
   /* Graciously borrowed from 5190*/
   public static final double kRobotMass = 50 /* Robot, kg */ + 5f /* Battery, kg */ + 2f /* Bumpers, kg */;
@@ -15,10 +15,10 @@ public class ConstantsAuto {
   public static final double kRobotAngularDrag = 12.0; // N*m / (rad/sec)
 
   // public static final double kWheelRadius = Util.toMeters(2f/12f);// meters. TODO tune
-  public static final double kWheelRadius = Util.toMeters(0.5);// meters. TODO tune
+  public static final double kWheelRadius = Util.toMeters(3f/12f);// meters. TODO tune
 
   //public static final double kTrackWidth = Util.toMeters(26f/12f);// meters
-  public static final double kTrackWidth = Util.toMeters(25f/12f);// meters
+  public static final double kTrackWidth = Util.toMeters(26f/12f);// meters
 
   
   public static final double kStaticFrictionVoltage = 1.8; // Volts TODO tune

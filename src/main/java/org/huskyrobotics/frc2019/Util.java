@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.huskyrobotics.lib;
+package org.huskyrobotics.frc2019;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

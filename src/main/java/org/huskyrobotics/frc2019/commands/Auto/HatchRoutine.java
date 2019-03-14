@@ -17,7 +17,7 @@ import org.huskyrobotics.frc2019.subsystems.drive.FalconLibStuff.FalconDrive;
 
 import edu.wpi.first.wpilibj.command.WaitCommand;
 
-public class CargoRoutine extends AutoCommandGroup {
+public class HatchRoutine extends AutoCommandGroup {
     private ArrayList<TimedTrajectory<Pose2dWithCurvature>> trajects = new ArrayList<TimedTrajectory<Pose2dWithCurvature>>();
     private static FalconDrive m_Drive = FalconDrive.getInstance();
   
@@ -26,26 +26,24 @@ public class CargoRoutine extends AutoCommandGroup {
      * @param startPos The starting position (L, M, or R)
      * @param side to target (L or R)
      */
-    public CargoRoutine(char startPos, char side) {
+    public HatchRoutine(char startPos, char side) {
       String Start = "hab" + startPos;
   
       /* Get a trajectory to move to the cargo ship */
       TimedTrajectory<Pose2dWithCurvature> traject = Trajectories.generatedTrajectories.get(Start + " to " + "cargoM" + side); //Generated using the Locs map in Trajectories.java
       trajects.add(traject);
       this.addSequential(m_Drive.followTrajectory(traject, true)); //drive to goal
-      /*this.addSequential(new Turn(Trajectories.locations.get("cargo" + side + '1').component2()));
+      //this.addSequential(new Turn(Trajectories.locations.get("cargo" + side + '1').component2()));
       //this.addParallel(new VisionTest());
       this.addSequential(new WaitCommand(0.5));
       //this.addSequential(new ReleaseCargo());
-  
       Start = "CargoM" + side;
 
       traject = Trajectories.generatedTrajectories.get(Start + " to " + "Depot" + side);
       this.addSequential(m_Drive.followTrajectory(traject));
-      this.addSequential(new Turn(Trajectories.locations.get("cargo" + side + '1').component2()));
+      //this.addSequential(new Turn(Trajectories.locations.get("cargo" + side + '1').component2()));
       //this.addSequential(new GrabCargo());
-      this.addSequential(new Turn(Trajectories.locations.get("Depot" + side + '1').component2()));
-*/
+      //this.addSequential(new Turn(Trajectories.locations.get("Depot" + side + '1').component2()));
     }
 
   }

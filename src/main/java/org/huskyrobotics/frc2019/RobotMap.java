@@ -26,20 +26,43 @@ public class RobotMap {
 
 
   // TalonSRXs
-  public static final int kLeftMaster = 0;
-  public static final int kRightMaster = 1;
+  // public static final int kLeftMaster = 0;
+  // public static final int kRightMaster = 1;
+  // public static final int kPivotMaster = 2;
+  // public static final int kWinchMaster = 3;
+
+
+  public static final int kLeftMaster = 4;
+  public static final int kRightMaster = 0;
   public static final int kPivotMaster = 2;
-  public static final int kWinchMaster = 3;
+  public static final int kWinchMaster = 11;
+  public static final int kHatchMaster = 22;
+
 
   // VictorSPXs
-  public static final int kLeftSlave = 0;
+  // public static final int kLeftSlave = 0;
+  // public static final int kRightSlave = 1;
+  // public static final int kIntake = 4;
+  // public static final int kTell_Me_What_We_Need = 4585;
+
+  public static final int kLeftSlave = 2;
   public static final int kRightSlave = 1;
   public static final int kIntake = 4;
   public static final int kTell_Me_What_We_Need = 4585;
 
+
   //PigeonIMU
+  //ORIGINAL PORT 0
   public static final int kCANPigeon = 0;
 
   // Compressor
-  public static final int COMPRESSOR = 0;
+  //ORIGINAL PORT 0
+  public static final int COMPRESSOR = 5;
+
+  //Linear Actuators
+  public static final int kLeftLinearActuator = 0;
+  public static final int kRightLinearActuator = 1;
+  //Pneumatics
+  // public static final int kLeftSolenoid = 1;
+  // public static final int kRightSolenoid = 2;
 }

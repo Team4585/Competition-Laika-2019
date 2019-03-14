@@ -10,6 +10,7 @@ package org.huskyrobotics.frc2019.commands;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
 import org.huskyrobotics.frc2019.Robot;
+import org.huskyrobotics.frc2019.subsystems.drive.FalconLibStuff.FalconDrive;
 
 /**
  * Add your docs here.
@@ -18,10 +19,11 @@ public class ShiftLow extends InstantCommand {
   /**
    * Add your docs here.
    */
+  FalconDrive drive = FalconDrive.getInstance();
   Boolean m_isHigh;
   public ShiftLow() {
     super();
-    requires(Robot.m_Drive);
+    requires(drive);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }

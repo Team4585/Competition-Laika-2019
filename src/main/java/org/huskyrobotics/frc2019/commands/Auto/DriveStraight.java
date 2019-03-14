@@ -14,7 +14,7 @@ import org.ghrobotics.lib.mathematics.units.derivedunits.VelocityKt;
 import org.huskyrobotics.frc2019.Constants;
 import org.huskyrobotics.frc2019.Robot;
 import org.huskyrobotics.frc2019.inputs.TestPID;
-import org.huskyrobotics.lib.DriveSignal;
+import org.huskyrobotics.frc2019.DriveSignal;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.command.Command;

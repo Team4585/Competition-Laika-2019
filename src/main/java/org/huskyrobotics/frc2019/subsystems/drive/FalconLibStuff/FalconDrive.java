@@ -28,8 +28,8 @@ import org.huskyrobotics.frc2019.RobotMap;
 import org.huskyrobotics.frc2019.Constants;
 import org.huskyrobotics.frc2019.ConstantsAuto;
 import org.huskyrobotics.frc2019.subsystems.drive.FalconLibStuff.FalconGearbox;
-import org.huskyrobotics.lib.Util;
-import org.huskyrobotics.lib.DriveSignal;
+import org.huskyrobotics.frc2019.Util;
+import org.huskyrobotics.frc2019.DriveSignal;
 import org.huskyrobotics.frc2019.FalconAuto.*;
 import org.huskyrobotics.frc2019.inputs.Gyro;
 import org.huskyrobotics.frc2019.inputs.Encoder.EncoderMode;
@@ -48,7 +48,7 @@ public class FalconDrive extends Subsystem implements DifferentialTrackerDriveBa
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new UseDrive());
-        setDefaultCommand(new UseDrive());
+        setDefaultCommand(new DrivetrainTeleOp());
     }
     
     private static FalconDrive m_instance;

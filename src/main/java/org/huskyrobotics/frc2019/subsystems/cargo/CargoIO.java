@@ -45,12 +45,12 @@ public class CargoIO extends Subsystem{
 		SmartDashboard.putNumber("Intake Speed", speed);
 	}
 	public void periodic(){
-		if(Robot.m_Oi.GetCargoIn() == true){
+		/*if(Robot.m_Oi.getCargoIn() == true){
 			intake(0.5);
 		}
-		if(Robot.m_Oi.GetCargoOut() == true){
+		if(Robot.m_Oi.getCargoOut() == true){
 			intake(-1);
-		}
+		}*/
 	}
 
 	public void stop () {

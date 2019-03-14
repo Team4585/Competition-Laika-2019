@@ -1,4 +1,4 @@
-package org.huskyrobotics.lib;
+package org.huskyrobotics.frc2019;
 /**
  * A drivetrain command consisting of the left, right motor settings and whether the brake mode is enabled.
  */

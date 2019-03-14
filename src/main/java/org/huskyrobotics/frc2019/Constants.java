@@ -13,12 +13,6 @@ public class Constants {
     public class controls{
         public static final double kLooperDt = 0.01;
     }
-    public class path{
-
-    }
-    public class physical{
-        
-    }
 
     public static class drivetrain{
             /** Drivetrain width in feet */

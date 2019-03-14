@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.huskyrobotics.frc2019.Robot;
 import org.huskyrobotics.frc2019.inputs.Vision;
-import org.huskyrobotics.lib.Util;
+import org.huskyrobotics.frc2019.Util;
 
 import org.ghrobotics.lib.mathematics.units.LengthKt;
 import org.ghrobotics.lib.mathematics.units.derivedunits.VelocityKt;

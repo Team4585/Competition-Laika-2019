@@ -7,6 +7,9 @@
 
 package org.huskyrobotics.frc2019.commands;
 
+import org.huskyrobotics.frc2019.Robot;
+
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class DrivetrainTeleOp extends CommandGroup {
@@ -14,7 +17,9 @@ public class DrivetrainTeleOp extends CommandGroup {
    * Add your docs here.
    */
   UseDrive m_UseDrive = new UseDrive();
-  //ShiftLow m_Shift = new ShiftLow();
+  ShiftHigh m_ShiftHigh = new ShiftHigh();
+
+  // ShiftLow m_Shift = new ShiftLow();
   public DrivetrainTeleOp() {
     addSequential(m_UseDrive);
     //addSequential(m_Shift);
