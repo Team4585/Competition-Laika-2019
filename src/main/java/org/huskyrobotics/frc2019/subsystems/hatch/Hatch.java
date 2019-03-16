@@ -12,6 +12,7 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import org.huskyrobotics.frc2019.Robot;
+import org.huskyrobotics.frc2019.RobotMap;
 import org.huskyrobotics.frc2019.commands.UseHatch;
 import org.huskyrobotics.frc2019.Util;
 
@@ -29,12 +30,17 @@ public class Hatch extends Subsystem{
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new UseDrive());
-        setDefaultCommand(new UseHatch(weapons.getY()));
+        setDefaultCommand(new UseHatch(1, Robot.m_Oi));
     }
 
-   
+    private static Hatch m_instance;
+    public synchronized static Hatch getInstance() {
+      if (m_instance == null) m_instance = new Hatch(RobotMap.kHatchMaster);
+      return m_instance;
+    }
     public Hatch(int motorChannel) {
         m_motor = new TalonSRX(motorChannel);
+        m_motor.enableCurrentLimit(true);
         m_motor.configPeakCurrentLimit(20, 10);
         m_motor.setNeutralMode(NeutralMode.Brake);
         m_motor.configPeakOutputForward(+0.75, 10);

@@ -9,13 +9,13 @@ package org.huskyrobotics.frc2019.commands;
 
 import org.huskyrobotics.frc2019.OI;
 import org.huskyrobotics.frc2019.Robot;
-import org.huskyrobotics.frc2019.subsystems.hatch.Hatch;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.TimedCommand;
 
-public class UseHatch extends Command {
+public class UseHatch extends TimedCommand {
 
-  public UseHatch(double oi) {
+  public UseHatch(double timeout, OI oi) {
+    super(timeout);
     requires(Robot.m_Kennedy);
     // Use requires() here to declare subsystem dependencies
     // eg. requirdoublees(chassis);
@@ -30,14 +30,13 @@ public class UseHatch extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double motorValue = 0.5;// Change motor value to something
-    /*
+    double motorValue = 0.25;// Change motor value to something
     while(Robot.m_Oi.contractHatchButton()){
       Robot.m_Kennedy.setMotor(motorValue); 
     }
     while(Robot.m_Oi.expandHatchButton()){
       Robot.m_Kennedy.setMotor(-motorValue);
-    }*/
+    }
     Robot.m_Kennedy.setMotor(Robot.m_Oi.getHatchAxis());
   }
 

@@ -11,8 +11,10 @@ import java.util.ArrayList;
 
 import org.ghrobotics.lib.mathematics.twodim.geometry.Pose2dWithCurvature;
 import org.ghrobotics.lib.mathematics.twodim.trajectory.types.TimedTrajectory;
+import org.huskyrobotics.frc2019.Robot;
 import org.huskyrobotics.frc2019.FalconAuto.*;
 import org.huskyrobotics.frc2019.commands.Turn;
+import org.huskyrobotics.frc2019.commands.UseHatch;
 import org.huskyrobotics.frc2019.subsystems.drive.FalconLibStuff.FalconDrive;
 
 import edu.wpi.first.wpilibj.command.WaitCommand;
@@ -33,10 +35,10 @@ public class HatchRoutine extends AutoCommandGroup {
       TimedTrajectory<Pose2dWithCurvature> traject = Trajectories.generatedTrajectories.get(Start + " to " + "cargoM" + side); //Generated using the Locs map in Trajectories.java
       trajects.add(traject);
       this.addSequential(m_Drive.followTrajectory(traject, true)); //drive to goal
-      //this.addSequential(new Turn(Trajectories.locations.get("cargo" + side + '1').component2()));
-      //this.addParallel(new VisionTest());
+      this.addSequential(new Turn(90));
+      this.addParallel(new VisionTest());
       this.addSequential(new WaitCommand(0.5));
-      //this.addSequential(new ReleaseCargo());
+      this.addSequential(new UseHatch(0.5, Robot.m_Oi));
       Start = "CargoM" + side;
 
       traject = Trajectories.generatedTrajectories.get(Start + " to " + "Depot" + side);
