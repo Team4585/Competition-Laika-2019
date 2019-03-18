@@ -48,7 +48,7 @@ public class Robot extends TimedRobot {
   }
   public static OI m_Oi = new OI(0, 1);
   public static Hatch m_Kennedy = Hatch.getInstance();
-  //public static Flipper m_Armstrong = Flipper.getInstance();
+  public static Flipper m_Armstrong = Flipper.getInstance();
   //public static CargoIO m_Cargo = CargoIO.getInstance();
   public static FalconDrive m_Drive = FalconDrive.getInstance();
   public static Vision m_Limelight = Vision.getInstance();

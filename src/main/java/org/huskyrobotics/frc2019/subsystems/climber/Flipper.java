@@ -1,12 +1,21 @@
 package org.huskyrobotics.frc2019.subsystems.climber;
 
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 //import edu.wpi.first.wpilibj.LinearServo;
 
-public class Flipper {
+import org.huskyrobotics.frc2019.RobotMap;
+import org.huskyrobotics.frc2019.commands.*;
+
+public class Flipper extends Subsystem {
+    public void initDefaultCommand() {
+        // Set the default command for a subsystem here.
+        //setDefaultCommand(new UseDrive());
+        setDefaultCommand(new Armstrong());
+    }
     private TalonSRX m_winchMotor;
     private Solenoid m_solLeft;
     private Solenoid m_solRight;
@@ -16,6 +25,11 @@ public class Flipper {
     private boolean m_controlActive = false;
     private boolean m_locked = false;
 
+    private static Flipper m_instance;
+    public synchronized static Flipper getInstance() {
+      if (m_instance == null) m_instance = new Flipper(RobotMap.kWinchMaster, 1, 2);
+      return m_instance;
+    }
     public Flipper (int winchMotorPort, int solenoidChannelLeft, int solenoidChannelRight) {
         m_winchMotor = new TalonSRX(winchMotorPort);
         m_solLeft = new Solenoid(solenoidChannelLeft);
@@ -25,7 +39,7 @@ public class Flipper {
     public void setWinchAxis(double input) {
         if(m_controlActive) {
             if(Math.abs(input) > 0.1) {
-                m_winchMotor.set(ControlMode.PercentOutput, input);
+                m_winchMotor.set(ControlMode.Position, input);
             } else {
                 m_winchMotor.set(ControlMode.PercentOutput, 0);
             }
@@ -34,16 +48,6 @@ public class Flipper {
 	public void setActive (boolean input) {
 		m_controlActive = !input;
 	}
-    public void periodic() {
-        if(m_controlActive) {
-            clamp(true);
-        }
-        m_solLeft.set(m_solActive);
-        m_solRight.set(m_solActive);
-        if(m_locked) {
-
-        }
-    }
 
     //Clamps onto the platform so winch can pull robot up.
     //True for clamped, false for released/
