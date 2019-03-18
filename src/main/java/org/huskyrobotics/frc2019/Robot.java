@@ -22,6 +22,7 @@ import org.huskyrobotics.frc2019.subsystems.cargo.CargoIO;
 import org.huskyrobotics.frc2019.subsystems.climber.Flipper;
 import org.huskyrobotics.frc2019.subsystems.drive.FalconLibStuff.FalconDrive;
 import org.huskyrobotics.frc2019.subsystems.hatch.Hatch;
+import org.huskyrobotics.frc2019.subsystems.superstructure.PivotArm;
 import org.ghrobotics.lib.debug.LiveDashboard;
 import org.ghrobotics.lib.mathematics.twodim.geometry.Pose2d;
 import org.ghrobotics.lib.mathematics.units.LengthKt;
@@ -30,12 +31,10 @@ import org.ghrobotics.lib.mathematics.units.derivedunits.VelocityKt;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 
-import org.huskyrobotics.frc2019.Constants.limelight;
 import org.huskyrobotics.frc2019.FalconAuto.*;
 import org.huskyrobotics.frc2019.commands.Auto.*;
 //import org.huskyrobotics.frc2019.commands.Auto.CargoRoutine;
 import org.huskyrobotics.frc2019.inputs.*;
-import org.huskyrobotics.frc2019.inputs.Encoder.EncoderMode;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -45,16 +44,15 @@ import org.huskyrobotics.frc2019.inputs.Encoder.EncoderMode;
  */
 public class Robot extends TimedRobot {
   public Robot(){
-    super(0.025d);
+    super(0.02d);
   }
   public static OI m_Oi = new OI(0, 1);
-  public static Hatch m_Kennedy = new Hatch(RobotMap.kHatchMaster);
-  public static Flipper m_Armstrong;
-  //public static CargoIO m_Cargo = new CargoIO(RobotMap.kIntake);
-  //public static Hatch m_Kennedy = new Hatch(3);
+  public static Hatch m_Kennedy = Hatch.getInstance();
+  public static Flipper m_Armstrong = Flipper.getInstance();
+  //public static CargoIO m_Cargo = CargoIO.getInstance();
   public static FalconDrive m_Drive = FalconDrive.getInstance();
-  public static Vision m_Limelight = new Vision();
-  //public static PivotArm m_Pivot = new PivotArm(RobotMap.kPivotMaster, EncoderMode.QuadEncoder);
+  public static Vision m_Limelight = Vision.getInstance();
+  //public static PivotArm m_Pivot = PivotArm.getInstance();
   private Compressor m_Compressor = new Compressor();
   private Boolean m_HasTarget;
   Command m_autonomousCommand;
@@ -75,10 +73,8 @@ public class Robot extends TimedRobot {
     
     Trajectories.generateAllTrajectories();
     m_Compressor.setClosedLoopControl(true);                                                                                        
-    //m_cargo = new CargoIO(RobotMap.cargoMotorPWM, RobotMap.cargoMotorDIO, RobotMap.cargoSensor);
-    // m_Armstrong = new Flipper(RobotMap.kWinchMaster, RobotMap.kLeftSolenoid, RobotMap.kRightSolenoid);
     Auto = new SendableChooser<Command>();
-    Auto.addOption("My Auto", new HatchRoutine('m', 'l'));
+    Auto.addOption("My Auto", new HatchRoutine('l', 'l'));
     Auto.addOption("Test", new TestAuto());
     Auto.addOption("Drive Straight", new DriveStraight(2));
     SmartDashboard.putData("Auto", Auto);

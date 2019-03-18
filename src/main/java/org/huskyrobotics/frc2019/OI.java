@@ -168,12 +168,12 @@ public class OI {
     }
     return(0);
   }
-  /*public boolean contractHatchButton() {
+  public boolean contractHatchButton() {
     return(m_WeaponStick.getRawButton((int) weaponsControls[getCurrentWeapons()].get("HatchIn")));
   }
   public boolean expandHatchButton() {
     return(m_WeaponStick.getRawButton((int) weaponsControls[getCurrentWeapons()].get("HatchOut")));
-  }*/
+  }
 
   public boolean getClimbActive () {
     return m_WeaponStick.getRawButtonPressed((int) weaponsControls[getCurrentWeapons()].get("ToggleClimb"));

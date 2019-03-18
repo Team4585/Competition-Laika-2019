@@ -5,6 +5,11 @@ import edu.wpi.first.networktables.*;
 
 public class Vision
 {
+  private static Vision m_instance;
+  public synchronized static Vision getInstance() {
+    if (m_instance == null) m_instance = new Vision();
+    return m_instance;
+  }
     private double x, y, area;
     //x is the tx degree value from Limelight Network Table
     //y is the ty degree value from Limelight Network Table
