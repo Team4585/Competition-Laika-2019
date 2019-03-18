@@ -28,7 +28,7 @@ public class Clamp extends InstantCommand {
   // Called once when the command executes
   @Override
   protected void initialize() {
-    while(Robot.m_Oi.getClimbActive()){
+    if(Robot.m_Oi.getClimbActive() == true){
     Robot.m_Armstrong.clamp(true);
     }
   }
