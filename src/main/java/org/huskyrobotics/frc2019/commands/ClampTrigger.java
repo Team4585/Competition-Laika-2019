@@ -7,30 +7,14 @@
 
 package org.huskyrobotics.frc2019.commands;
 
-import org.huskyrobotics.frc2019.Robot;
-
-import edu.wpi.first.wpilibj.command.InstantCommand;
+import edu.wpi.first.wpilibj.buttons.Trigger;
 
 /**
  * Add your docs here.
  */
-public class Clamp extends InstantCommand {
-  /**
-   * Add your docs here.
-   */
-  public Clamp() {
-    super();
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);;
-    requires(Robot.m_Armstrong);
-  }
-
-  // Called once when the command executes
+public class ClampTrigger extends Trigger {
   @Override
-  protected void initialize() {
-    while(Robot.m_Oi.getClimbActive()){
-    Robot.m_Armstrong.clamp(true);
-    }
+  public boolean get() {
+    return false;
   }
-
 }

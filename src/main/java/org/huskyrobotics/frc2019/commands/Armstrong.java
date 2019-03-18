@@ -8,6 +8,8 @@
 package org.huskyrobotics.frc2019.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+
+import org.huskyrobotics.frc2019.Robot;
 import org.huskyrobotics.frc2019.commands.*;
 
 public class Armstrong extends CommandGroup {
