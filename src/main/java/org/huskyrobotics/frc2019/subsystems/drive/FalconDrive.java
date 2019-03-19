@@ -1,4 +1,4 @@
-package org.huskyrobotics.frc2019.subsystems.drive.FalconLibStuff;
+package org.huskyrobotics.frc2019.subsystems.drive;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,7 +27,7 @@ import org.ghrobotics.lib.wrappers.ctre.FalconSRX;
 import org.huskyrobotics.frc2019.RobotMap;
 import org.huskyrobotics.frc2019.Constants;
 import org.huskyrobotics.frc2019.ConstantsAuto;
-import org.huskyrobotics.frc2019.subsystems.drive.FalconLibStuff.FalconGearbox;
+import org.huskyrobotics.frc2019.subsystems.drive.FalconGearbox;
 import org.huskyrobotics.frc2019.Util;
 import org.huskyrobotics.frc2019.DriveSignal;
 import org.huskyrobotics.frc2019.FalconAuto.*;
@@ -39,8 +39,7 @@ import org.huskyrobotics.frc2019.commands.*;
 import edu.wpi.first.wpilibj.Notifier;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
-
-
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import kotlin.ranges.RangesKt;
 
 public class FalconDrive extends Subsystem implements DifferentialTrackerDriveBase{
@@ -70,7 +69,7 @@ public class FalconDrive extends Subsystem implements DifferentialTrackerDriveBa
     public static enum Gear {
         Low, High;
     }
-    Gear gear;
+    Gear m_CurrentGear;
 
     private static double kQuickStopThreshold = 0.0; 
     private static double kQuickStopAlpha = 0.0;
@@ -93,9 +92,7 @@ public class FalconDrive extends Subsystem implements DifferentialTrackerDriveBa
     public void setTrackerMode(TrajectoryTrackerMode mode) {
         trackerMode = mode;
     }*/
-
-    private DCMotorTransmission m_Transmission;
-    private DifferentialDrive m_differentialDrive;
+    private DifferentialDrive m_differentialDriveL, m_differentialDriveH;
     private FalconGearbox leftTransmission, rightTransmission;
 
     private TrajectoryTrackerMode kDefaulTrajectoryTrackerMode = TrajectoryTrackerMode.Ramsete;
@@ -130,21 +127,8 @@ public class FalconDrive extends Subsystem implements DifferentialTrackerDriveBa
         );
         localization.reset( new Pose2d() );
 
-        m_Transmission = new DCMotorTransmission(
-            1 / ConstantsAuto.kVDrive,
-            ConstantsAuto.kWheelRadius * ConstantsAuto.kWheelRadius * ConstantsAuto.kRobotMass / (2.0 * ConstantsAuto.kADrive),
-            ConstantsAuto.kStaticFrictionVoltage
-        );
-
-        m_differentialDrive = new DifferentialDrive(
-            ConstantsAuto.kRobotMass,
-            ConstantsAuto.kRobotMomentOfInertia,
-            ConstantsAuto.kRobotAngularDrag,
-            ConstantsAuto.kWheelRadius,
-            ConstantsAuto.kTrackWidth / 2.0,
-            m_Transmission,
-            m_Transmission
-        );
+        m_differentialDriveH = ConstantsAuto.kHighGearDifferentialDrive;
+        m_differentialDriveL = ConstantsAuto.kLowGearDifferentialDrive;
 
         ramseteTracker = new RamseteTracker(ConstantsAuto.kDriveBeta, ConstantsAuto.kDriveZeta);
         purePursuitTracker = new PurePursuitTracker(ConstantsAuto.kLat, ConstantsAuto.kLookaheadTime, ConstantsAuto.kMinLookaheadDistance);
@@ -154,13 +138,10 @@ public class FalconDrive extends Subsystem implements DifferentialTrackerDriveBa
       /* Utility related Methods */
 
       public DifferentialDrive getDifferentialDrive() {
-        return m_differentialDrive;
-      }
-    
-      public DCMotorTransmission getTransmissionModel() {
-        return m_Transmission;
-      }
-          
+        // String mes = (mCurrentGear == Gear.LOW) ? "lowGearDifferentialDrive" : "highGearDifferentialDrive"; 
+        SmartDashboard.putString("current drive model", (m_CurrentGear == Gear.Low) ? "lowGearDifferentialDrive" : "highGearDifferentialDrive");
+        return (m_CurrentGear == Gear.Low) ? m_differentialDriveL : m_differentialDriveH;
+      } 
       public FalconGearbox getLeft() {
         return leftTransmission;
       }

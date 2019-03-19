@@ -57,7 +57,6 @@ public class HeyLookListen extends Command {
   protected void initialize() {
     setTimeout(timeout);
 
-    angleDeltaX = m_Limelight.getDx();
     targetPercentOfFrame = m_Limelight.getTargetArea();
 
 

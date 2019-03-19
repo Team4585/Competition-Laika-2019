@@ -9,7 +9,7 @@ package org.huskyrobotics.frc2019.commands.Auto;
 
 import org.huskyrobotics.frc2019.Robot;
 import org.huskyrobotics.frc2019.FalconAuto.Trajectories;
-import org.huskyrobotics.frc2019.subsystems.drive.FalconLibStuff.FalconDrive;
+import org.huskyrobotics.frc2019.subsystems.drive.FalconDrive;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 

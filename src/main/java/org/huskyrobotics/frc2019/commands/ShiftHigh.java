@@ -11,8 +11,7 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 
 import org.huskyrobotics.frc2019.Robot;
-import org.huskyrobotics.frc2019.subsystems.drive.FalconLibStuff.FalconDrive;
-import org.huskyrobotics.frc2019.subsystems.drive.FalconLibStuff.FalconDrive.Gear;
+import org.huskyrobotics.frc2019.subsystems.drive.FalconDrive;
 
 /**
  * Add your docs here.

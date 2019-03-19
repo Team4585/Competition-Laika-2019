@@ -15,7 +15,7 @@ import org.huskyrobotics.frc2019.Robot;
 import org.huskyrobotics.frc2019.FalconAuto.*;
 import org.huskyrobotics.frc2019.commands.Turn;
 import org.huskyrobotics.frc2019.commands.UseHatch;
-import org.huskyrobotics.frc2019.subsystems.drive.FalconLibStuff.FalconDrive;
+import org.huskyrobotics.frc2019.subsystems.drive.FalconDrive;
 
 import edu.wpi.first.wpilibj.command.WaitCommand;
 

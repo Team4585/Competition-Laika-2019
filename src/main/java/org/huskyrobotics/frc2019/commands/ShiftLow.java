@@ -10,7 +10,7 @@ package org.huskyrobotics.frc2019.commands;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
 import org.huskyrobotics.frc2019.Robot;
-import org.huskyrobotics.frc2019.subsystems.drive.FalconLibStuff.FalconDrive;
+import org.huskyrobotics.frc2019.subsystems.drive.FalconDrive;
 
 /**
  * Add your docs here.
