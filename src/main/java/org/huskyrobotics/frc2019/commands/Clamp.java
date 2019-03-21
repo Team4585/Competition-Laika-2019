@@ -29,7 +29,7 @@ public class Clamp extends InstantCommand {
   @Override
   protected void initialize() {
     if(Robot.m_Oi.getClimbActive() == true){
-    Robot.m_Armstrong.clamp(true);
+      Robot.m_Armstrong.clamp(true);
     }
   }
 

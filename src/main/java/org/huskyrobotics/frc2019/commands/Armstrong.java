@@ -18,9 +18,11 @@ public class Armstrong extends CommandGroup {
    */
   Clamp m_Clamp = new Clamp();
   Winch m_Winch = new Winch();
+  Unlock m_Unlock = new Unlock();
   public Armstrong() {
     addSequential(m_Clamp);
     addSequential(m_Winch);
+    addSequential(m_Unlock);
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());

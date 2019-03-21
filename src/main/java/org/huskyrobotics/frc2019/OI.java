@@ -178,6 +178,9 @@ public class OI {
   public boolean getClimbActive () {
     return m_WeaponStick.getRawButtonPressed((int) weaponsControls[getCurrentWeapons()].get("ToggleClimb"));
   }
+  public boolean getArmstrongLocked () {
+    return m_WeaponStick.getRawButtonPressed((int) weaponsControls[getCurrentWeapons()].get("UnlockClimber"));
+  }
   // public boolean getRotate(){
   //   return m_WeaponStick.getRawButton(controlsW.get("ArmRotate"));
   // }

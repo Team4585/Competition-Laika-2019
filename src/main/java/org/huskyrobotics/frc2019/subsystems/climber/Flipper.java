@@ -23,7 +23,6 @@ public class Flipper extends Subsystem {
     private boolean m_solActive;
 
     private boolean m_controlActive = false;
-    private boolean m_locked = false;
 
     private static Flipper m_instance;
     public synchronized static Flipper getInstance() {
@@ -53,11 +52,11 @@ public class Flipper extends Subsystem {
     //True for clamped, false for released/
     public void clamp(boolean clamp) {
         m_solActive = clamp;
+        m_controlActive = clamp;
     }
     public void toggleClamp() {
         m_solActive = !m_solActive;
     }
-
     public boolean getClamped() {
         return(m_solActive);
     }
@@ -67,9 +66,11 @@ public class Flipper extends Subsystem {
     }
 
     public void lock() {
-        m_locked = true;
+        m_solLeft.set(true);
+        m_solRight.set(true);
     }
     public void unlock() {
-        m_locked = false;
+        m_solLeft.set(false);
+        m_solRight.set(false);
     }
 }
