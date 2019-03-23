@@ -117,7 +117,7 @@ public class FalconGearbox {
           m_Master.config_kI(0, ki, 10);
           m_Master.config_kD(0, kd, 10);
           m_Master.config_kF(0, kf, 10);
-          m_Master.config_IntegralZone(0, (int)Math.round(lengthModel.fromModel(LengthKt.getMeter(iZone)).getValue()), 30);
+          m_Master.config_IntegralZone(0, (int) Math.round(lengthModel.toNativeUnitPosition(LengthKt.getMeter(iZone)).getValue()), 30);
           m_Master.configMaxIntegralAccumulator(0, maxIntegral, 0);
         }
 
@@ -141,7 +141,7 @@ public class FalconGearbox {
 
         public Length getClosedLoopError() {
             if (getMaster().getControlMode() != ControlMode.PercentOutput) {
-              return lengthModel.toModel(NativeUnitKt.getSTU(m_Master.getClosedLoopError()));
+                return lengthModel.fromNativeUnitPosition(NativeUnitKt.getNativeUnits(m_Master.getClosedLoopError()));
             }
             else {
               return LengthKt.getFeet(0);

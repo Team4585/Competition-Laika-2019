@@ -32,8 +32,8 @@ public class RobotMap {
   // public static final int kWinchMaster = 3;
 
 
-  public static final int kLeftMaster = 4;
-  public static final int kRightMaster = 0;
+  public static final int kLeftMaster = 0;
+  public static final int kRightMaster = 4;
   public static final int kPivotMaster = 2;
   public static final int kWinchMaster = 11;
   public static final int kHatchMaster = 22;
@@ -45,8 +45,8 @@ public class RobotMap {
   // public static final int kIntake = 4;
   // public static final int kTell_Me_What_We_Need = 4585;
 
-  public static final int kLeftSlave = 2;
-  public static final int kRightSlave = 1;
+  public static final int kLeftSlave = 1;
+  public static final int kRightSlave = 2;
   public static final int kIntake = 4;
   public static final int kTell_Me_What_We_Need = 4585;
 

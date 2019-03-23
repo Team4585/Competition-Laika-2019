@@ -32,7 +32,7 @@ public class HatchRoutine extends AutoCommandGroup {
       String Start = "hab" + startPos;
   
       /* Get a trajectory to move to the cargo ship */
-      TimedTrajectory<Pose2dWithCurvature> traject = Trajectories.generatedTrajectories.get(Start + " to " + "cargoM" + side); //Generated using the Locs map in Trajectories.java
+      TimedTrajectory<Pose2dWithCurvature> traject = Trajectories.generatedLGTrajectories.get(Start + " to " + "cargoM" + side); //Generated using the Locs map in Trajectories.java
       trajects.add(traject);
       this.addSequential(m_Drive.followTrajectory(traject, true)); //drive to goal
       this.addSequential(new Turn(90));
@@ -41,7 +41,7 @@ public class HatchRoutine extends AutoCommandGroup {
       this.addSequential(new UseHatch(0.5, Robot.m_Oi));
       Start = "CargoM" + side;
 
-      traject = Trajectories.generatedTrajectories.get(Start + " to " + "Depot" + side);
+      traject = Trajectories.generatedLGTrajectories.get(Start + " to " + "Depot" + side);
       this.addSequential(m_Drive.followTrajectory(traject));
       //this.addSequential(new Turn(Trajectories.locations.get("cargo" + side + '1').component2()));
       //this.addSequential(new GrabCargo());

@@ -126,7 +126,7 @@ public class Robot extends TimedRobot {
 
     SmartDashboard.putNumber("Rough Acceleration", Math.sqrt(Math.pow(feetPerSecondPerSecond.get(0), 2) + Math.pow(feetPerSecondPerSecond.get(1), 2)));
 
-		SmartDashboard.putNumber("7 feet per second is", m_Drive.getLeft().getModel().fromModel(LengthKt.getFeet(7)).getValue());
+		SmartDashboard.putNumber("7 feet per second is", m_Drive.getLeft().getModel().toNativeUnitPosition(LengthKt.getFeet(7)).getValue());
 
     SmartDashboard.putNumber("Current Gyro angle", m_Drive.getGyro());
     

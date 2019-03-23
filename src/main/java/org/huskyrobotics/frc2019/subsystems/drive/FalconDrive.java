@@ -7,7 +7,6 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.DemandType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.sensors.PigeonIMU;
-import com.team254.lib.physics.DCMotorTransmission;
 import com.team254.lib.physics.DifferentialDrive;
 
 import org.ghrobotics.lib.localization.Localization;
@@ -31,7 +30,6 @@ import org.huskyrobotics.frc2019.subsystems.drive.FalconGearbox;
 import org.huskyrobotics.frc2019.Util;
 import org.huskyrobotics.frc2019.DriveSignal;
 import org.huskyrobotics.frc2019.FalconAuto.*;
-import org.huskyrobotics.frc2019.inputs.Gyro;
 import org.huskyrobotics.frc2019.inputs.Encoder.EncoderMode;
 import org.huskyrobotics.frc2019.commands.*;
 
@@ -455,14 +453,5 @@ public class FalconDrive extends Subsystem implements DifferentialTrackerDriveBa
       public TrajectoryTrackerCommand followTrajectory(TimedTrajectory<Pose2dWithCurvature> trajectory, TrajectoryTrackerMode mode, boolean reset){
         kDefaulTrajectoryTrackerMode = mode;
         return new TrajectoryTrackerCommand(this, getTrajectoryTracker(mode), () -> trajectory, reset);
-      }
-    /**
-     * I've put too much time into this team, just fucking end me
-     */
-      public void death(){
-        if(Constants.kWillToLive <= 0){
-          //Sets left and right sides of the drivetrain to 100% (presumably into my shins)
-          tankDrive(1, 1);
-        }
       }
 }

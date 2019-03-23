@@ -18,7 +18,7 @@ public class TestAuto extends CommandGroup {
    * Add your docs here.
    */
   public TestAuto() {
-    addSequential(FalconDrive.getInstance().followTrajectory((Trajectories.generatedTrajectories.get("test")), true));
+    addSequential(FalconDrive.getInstance().followTrajectory((Trajectories.generatedLGTrajectories.get("test")), true));
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
