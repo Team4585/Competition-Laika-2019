@@ -29,7 +29,7 @@ public class Flipper extends Subsystem {
 
     private static Flipper m_instance;
     public synchronized static Flipper getInstance() {
-      if (m_instance == null) m_instance = new Flipper(RobotMap.kWinchMaster, 1, 2, 0, 0);
+      if (m_instance == null) m_instance = new Flipper(RobotMap.kWinchMaster, RobotMap.kLeftSolenoid, RobotMap.kRightSolenoid, RobotMap.kLeftLinearActuator, RobotMap.kRightLinearActuator);
       return m_instance;
     }
     public Flipper (int winchMotorPort, int solenoidChannelLeft, int solenoidChannelRight, int servoChannelLeft, int servoChannelRight) {
