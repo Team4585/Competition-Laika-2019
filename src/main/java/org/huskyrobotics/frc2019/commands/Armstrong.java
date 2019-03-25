@@ -20,6 +20,7 @@ public class Armstrong extends CommandGroup {
   Winch m_Winch = new Winch();
   Unlock m_Unlock = new Unlock();
   public Armstrong() {
+    System.out.println("Armstrong Command Group");
     addSequential(m_Clamp);
     addSequential(m_Winch);
     addSequential(m_Unlock);

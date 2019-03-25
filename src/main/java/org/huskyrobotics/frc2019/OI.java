@@ -44,8 +44,6 @@ public class OI {
     shiftHigh.whenPressed(new ShiftHigh());
     shiftLow.whenPressed(new ShiftLow());
 
-
-
     SmartDashboard.putData("Helm Driver", m_helm);
     SmartDashboard.putData("Weapons Officer", m_weapon);
 
@@ -168,17 +166,18 @@ public class OI {
     }
     return(0);
   }
-  public boolean contractHatchButton() {
+  /*public boolean contractHatchButton() {
     return(m_WeaponStick.getRawButton((int) weaponsControls[getCurrentWeapons()].get("HatchIn")));
   }
   public boolean expandHatchButton() {
     return(m_WeaponStick.getRawButton((int) weaponsControls[getCurrentWeapons()].get("HatchOut")));
-  }
-
+  }*/
   public boolean getClimbActive () {
+    System.out.println(m_WeaponStick.getRawButtonPressed((int) weaponsControls[getCurrentWeapons()].get("ToggleClimb")));
     return m_WeaponStick.getRawButtonPressed((int) weaponsControls[getCurrentWeapons()].get("ToggleClimb"));
   }
   public boolean getArmstrongLocked () {
+    System.out.println(m_WeaponStick.getRawButtonPressed((int) weaponsControls[getCurrentWeapons()].get("UnlockClimber")));
     return m_WeaponStick.getRawButtonPressed((int) weaponsControls[getCurrentWeapons()].get("UnlockClimber"));
   }
   // public boolean getRotate(){

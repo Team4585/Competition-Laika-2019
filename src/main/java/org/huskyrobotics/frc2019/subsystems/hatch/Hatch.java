@@ -22,8 +22,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  * Add your docs here.
  */
-public class Hatch extends Subsystem{
-    Joystick weapons = new Joystick(1);    
+public class Hatch extends Subsystem { 
     TalonSRX m_motor;
     
     @Override

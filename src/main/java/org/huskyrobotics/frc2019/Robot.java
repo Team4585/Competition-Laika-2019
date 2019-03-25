@@ -8,6 +8,8 @@
 
 package org.huskyrobotics.frc2019;
 
+//import static org.junit.Assert.assertArrayEquals;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -195,7 +197,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
-   
+    m_Armstrong.periodic();
   }
 
   @Override
@@ -215,8 +217,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    
-
+    m_Armstrong.periodic();
   }
 
   /**
@@ -224,6 +225,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
-    
+    m_Armstrong.periodic();
   }
 }

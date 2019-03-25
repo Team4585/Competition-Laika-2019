@@ -30,13 +30,13 @@ public class UseHatch extends TimedCommand {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double motorValue = 0.25;// Change motor value to something
+    /*double motorValue = 0.25;// Change motor value to something
     while(Robot.m_Oi.contractHatchButton()){
       Robot.m_Kennedy.setMotor(motorValue); 
     }
     while(Robot.m_Oi.expandHatchButton()){
       Robot.m_Kennedy.setMotor(-motorValue);
-    }
+    }*/
     Robot.m_Kennedy.setMotor(Robot.m_Oi.getHatchAxis());
   }
 

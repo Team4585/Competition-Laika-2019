@@ -63,6 +63,6 @@ public class RobotMap {
   public static final int kLeftLinearActuator = 0;
   public static final int kRightLinearActuator = 1;
   //Pneumatics
-  // public static final int kLeftSolenoid = 1;
-  // public static final int kRightSolenoid = 2;
+  public static final int kLeftSolenoid = 1;
+  public static final int kRightSolenoid = 2;
 }
